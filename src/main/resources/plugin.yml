@@ -1,0 +1,5 @@
+name: Tracker
+author: Komp
+description: Advanced damage tracking
+version: ${project.version}
+main: pw.kmp.tracker.TrackerPlugin
