@@ -1,15 +1,15 @@
 package pw.kmp.tracker.trackers.meelee;
 
-import org.bukkit.Material;
 import org.bukkit.entity.LivingEntity;
+import org.bukkit.inventory.ItemStack;
 import pw.kmp.tracker.damage.DamageCause;
 import pw.kmp.tracker.damage.EntityCause;
 
 public class MeleeCause extends DamageCause implements EntityCause {
     private LivingEntity attacker;
-    private Material weapon;
+    private ItemStack weapon;
 
-    public MeleeCause(LivingEntity attacker, Material weapon) {
+    public MeleeCause(LivingEntity attacker, ItemStack weapon) {
         this.attacker = attacker;
         this.weapon = weapon;
     }
@@ -24,7 +24,7 @@ public class MeleeCause extends DamageCause implements EntityCause {
         return attacker;
     }
 
-    public Material getWeapon() {
+    public ItemStack getWeapon() {
         return weapon;
     }
 }
