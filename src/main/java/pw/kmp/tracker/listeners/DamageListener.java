@@ -19,7 +19,6 @@ import pw.kmp.tracker.trackers.Tracker;
 import pw.kmp.tracker.trackers.UnknownCause;
 import pw.kmp.tracker.trackers.explosion.ExplosionCause;
 
-
 public class DamageListener implements Listener {
 
     @EventHandler(priority = EventPriority.LOWEST)
