@@ -22,9 +22,8 @@ public class ProjectileTracker extends Tracker {
 
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
     public void onLaunch(ProjectileLaunchEvent event) {
-        if (event.getEntity().getShooter() instanceof LivingEntity) {
-            locations.put(event.getEntity(), ((LivingEntity) event.getEntity().getShooter()).getLocation());
-        }
+        Location location = event.getEntity().getLocation();
+        setLaunchLocation(event.getEntity(), location);
     }
 
     @Override
@@ -33,15 +32,28 @@ public class ProjectileTracker extends Tracker {
             EntityDamageByEntityEvent e = (EntityDamageByEntityEvent) event;
             if (e.getDamager() instanceof Projectile) {
                 Projectile projectile = (Projectile) e.getDamager();
-                if (!(projectile.getShooter() instanceof LivingEntity)) return null;
-
-                Location loc = locations.get(projectile);
+                Location loc = getLaunchLocation(projectile);
                 Double distance = null;
+
                 if (loc != null) distance = event.getEntity().getLocation().distance(loc);
-                return new ProjectileCause(projectile, (LivingEntity) projectile.getShooter(), distance);
+                if(projectile.getShooter() instanceof LivingEntity) {
+                    return new ProjectileCause(projectile, (LivingEntity) projectile.getShooter(), distance);
+                }
             }
         }
         return null;
+    }
+
+    public Location getLaunchLocation(Projectile projectile) {
+        return locations.get(projectile);
+    }
+
+    public Location setLaunchLocation(Projectile projectile, Location location) {
+        if(location != null) {
+            return locations.put(projectile, location);
+        } else {
+            return locations.remove(projectile);
+        }
     }
 
 }
