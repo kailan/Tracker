@@ -8,6 +8,7 @@ import pw.kmp.tracker.listeners.LifetimeListener;
 import pw.kmp.tracker.trackers.TrackerManager;
 import pw.kmp.tracker.trackers.explosion.ExplosionTracker;
 import pw.kmp.tracker.trackers.block.BlockTracker;
+import pw.kmp.tracker.trackers.anvil.AnvilTracker;
 import pw.kmp.tracker.trackers.gravity.GravityTracker;
 import pw.kmp.tracker.trackers.meelee.MeleeTracker;
 import pw.kmp.tracker.trackers.lava.LavaDamageTracker;
@@ -37,6 +38,7 @@ public class TrackerPlugin extends JavaPlugin {
         manager.registerTracker(new MeleeTracker());
         manager.registerTracker(new LavaDamageTracker());
         manager.registerTracker(new VoidTracker());
+        manager.registerTracker(new AnvilTracker());
     }
 
     public static TrackerPlugin get() {
