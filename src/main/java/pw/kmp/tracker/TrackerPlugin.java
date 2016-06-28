@@ -17,6 +17,7 @@ import pw.kmp.tracker.trackers.mob.MobTracker;
 import pw.kmp.tracker.trackers.projectile.ProjectileTracker;
 import pw.kmp.tracker.trackers.space.VoidTracker;
 import pw.kmp.tracker.trackers.water.WaterDamageTracker;
+import pw.kmp.tracker.trackers.suffocation.SuffocationTracker;
 
 public class TrackerPlugin extends JavaPlugin {
 
@@ -43,6 +44,7 @@ public class TrackerPlugin extends JavaPlugin {
         manager.registerTracker(new AnvilTracker());
         manager.registerTracker(new WaterDamageTracker());
         manager.registerTracker(new LightningTracker());
+        manager.registerTracker(new SuffocationTracker());
 
     }
 
