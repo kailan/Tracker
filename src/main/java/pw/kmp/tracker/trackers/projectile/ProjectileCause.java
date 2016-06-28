@@ -21,8 +21,8 @@ public class ProjectileCause extends DamageCause implements EntityCause {
     public String getName() {
         switch (projectile.getType()) {
             case ARROW:
-            case SPECTRAL_ARROW:
-            case TIPPED_ARROW:
+            //case SPECTRAL_ARROW:
+            //case TIPPED_ARROW:
                 return "Archery";
             case SNOWBALL:
                 return "Snowball";
