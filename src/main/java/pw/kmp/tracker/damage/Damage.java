@@ -37,12 +37,21 @@ public class Damage {
         return damaged;
     }
 
-    public DamageCause getCause() {
-        return cause;
+    public <T extends DamageCause> T getCause() {
+        return (T) cause;
     }
 
     public void setCause(DamageCause cause) {
         this.cause = cause;
     }
 
+    @Override
+    public String toString() {
+        return "Damage{" +
+                ", time=" + time +
+                ", damage=" + damage +
+                ", damaged=" + damaged +
+                ", cause=" + cause +
+                '}';
+    }
 }
