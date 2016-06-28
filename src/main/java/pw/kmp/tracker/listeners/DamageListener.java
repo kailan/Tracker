@@ -17,6 +17,7 @@ import pw.kmp.tracker.event.TrackedDeathEvent;
 import pw.kmp.tracker.lifetime.Lifetime;
 import pw.kmp.tracker.trackers.Tracker;
 import pw.kmp.tracker.trackers.UnknownCause;
+import pw.kmp.tracker.trackers.explosion.ExplosionCause;
 
 public class DamageListener implements Listener {
 
@@ -46,7 +47,7 @@ public class DamageListener implements Listener {
     @EventHandler(priority = EventPriority.MONITOR)
     public void onDeath(PlayerDeathEvent event) {
         Lifetime lifetime = Lifetimes.getLifetime(event.getEntity());
-        if (lifetime.getLastDamage() != null) {
+        if (lifetime != null && lifetime.getLastDamage() != null) {
             TrackedDeathEvent tde = new TrackedDeathEvent(event.getEntity(), lifetime.getLastDamage());
             Bukkit.getPluginManager().callEvent(tde);
         }
