@@ -7,6 +7,7 @@ import pw.kmp.tracker.listeners.DebugListener;
 import pw.kmp.tracker.listeners.LifetimeListener;
 import pw.kmp.tracker.trackers.TrackerManager;
 import pw.kmp.tracker.trackers.explosion.ExplosionTracker;
+import pw.kmp.tracker.trackers.block.BlockTracker;
 import pw.kmp.tracker.trackers.gravity.GravityTracker;
 import pw.kmp.tracker.trackers.meelee.MeleeTracker;
 import pw.kmp.tracker.trackers.lava.LavaDamageTracker;
@@ -28,6 +29,7 @@ public class TrackerPlugin extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new DebugListener(), this);
 
         TrackerManager manager = Trackers.getManager();
+        manager.registerTracker(new BlockTracker());
         manager.registerTracker(new ProjectileTracker());
         manager.registerTracker(new MobTracker());
         manager.registerTracker(new GravityTracker());
