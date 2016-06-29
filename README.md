@@ -11,7 +11,7 @@ Advanced damage Tracking for Strukkit servers.
 - [x] Explosions
 - [x] Falling blocks (anvils and suffocation)
 - [x] Dispensed projectiles
-- [ ] Potion effects
+- [x] Potion effects
 
 <br/>
 ---
