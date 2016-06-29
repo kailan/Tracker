@@ -1,18 +1,17 @@
 package pw.kmp.tracker.trackers;
 
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Optional;
-import java.util.Set;
 
 public class TrackerManager {
 
-    private final Set<Tracker> trackers;
+    private final LinkedHashSet<Tracker> trackers;
 
     public TrackerManager() {
-        trackers = new HashSet<>();
+        trackers = new LinkedHashSet<>();
     }
 
-    public Set<Tracker> getTrackers() {
+    public LinkedHashSet<Tracker> getTrackers() {
         return trackers;
     }
 
@@ -26,8 +25,12 @@ public class TrackerManager {
     }
 
     public void registerTracker(Tracker t) {
-        trackers.add(t);
-        t.enable();
+        if(getTracker(t.getClass()) != null) {
+            throw new RuntimeException("Cannot register duplicate tracker " + t.getClass());
+        } else {
+            trackers.add(t);
+            t.enable();
+        }
     }
 
     public void unregisterTracker(Tracker t) {

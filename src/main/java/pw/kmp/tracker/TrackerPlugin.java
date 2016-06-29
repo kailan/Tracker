@@ -15,6 +15,7 @@ import pw.kmp.tracker.trackers.meelee.MeleeTracker;
 import pw.kmp.tracker.trackers.lava.LavaDamageTracker;
 import pw.kmp.tracker.trackers.lightning.LightningTracker;
 import pw.kmp.tracker.trackers.mob.MobTracker;
+import pw.kmp.tracker.trackers.potion.PotionTracker;
 import pw.kmp.tracker.trackers.projectile.ProjectileTracker;
 import pw.kmp.tracker.trackers.space.VoidTracker;
 import pw.kmp.tracker.trackers.water.WaterDamageTracker;
@@ -36,7 +37,6 @@ public class TrackerPlugin extends JavaPlugin {
         TrackerManager manager = Trackers.getManager();
 
         manager.registerTracker(new BlockTracker());
-        manager.registerTracker(new ProjectileTracker());
         manager.registerTracker(new MobTracker());
         manager.registerTracker(new GravityTracker());
         manager.registerTracker(new ExplosionTracker());
@@ -48,12 +48,13 @@ public class TrackerPlugin extends JavaPlugin {
         manager.registerTracker(new LightningTracker());
         manager.registerTracker(new SuffocationTracker());
 
+        manager.registerTracker(new PotionTracker());
         ProjectileTracker projectileTracker = new ProjectileTracker();
         manager.registerTracker(projectileTracker);
-        manager.registerTracker(new MobTracker());
-        manager.registerTracker(new GravityTracker());
+
         manager.registerTracker(new DispensedProjectileTracker(projectileTracker));
 
+        manager.getTrackers().stream().forEach(System.out::println);
     }
 
     public static TrackerPlugin get() {
