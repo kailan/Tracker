@@ -37,7 +37,6 @@ public class TrackerPlugin extends JavaPlugin {
         TrackerManager manager = Trackers.getManager();
 
         manager.registerTracker(new BlockTracker());
-       // manager.registerTracker(new ProjectileTracker());
         manager.registerTracker(new MobTracker());
         manager.registerTracker(new GravityTracker());
         manager.registerTracker(new ExplosionTracker());
@@ -52,8 +51,7 @@ public class TrackerPlugin extends JavaPlugin {
         manager.registerTracker(new PotionTracker());
         ProjectileTracker projectileTracker = new ProjectileTracker();
         manager.registerTracker(projectileTracker);
-      //  manager.registerTracker(new MobTracker());
-      //  manager.registerTracker(new GravityTracker());
+
         manager.registerTracker(new DispensedProjectileTracker(projectileTracker));
 
         manager.getTrackers().stream().forEach(System.out::println);
