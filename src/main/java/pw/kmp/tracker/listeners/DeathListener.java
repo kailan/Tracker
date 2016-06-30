@@ -1,6 +1,7 @@
 package pw.kmp.tracker.listeners;
 
 import net.md_5.bungee.api.ChatColor;
+import org.bukkit.entity.Creature;
 import org.bukkit.entity.Entity;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -68,15 +69,18 @@ public class DeathListener implements Listener {
                 setMessage(event,  "%s was blown up by %s", event.getEntity().getDisplayName(), ((ExplosionCause.EntityExplosionCause) cause).getEntity().getName());
                 break;
             case MeleeCause:
-                setMessage(event,  "%s was slain by %s %s", event.getEntity().getDisplayName(), ((MeleeCause) cause).getEntity().getName() + "'s", ChatColor.GRAY + ((MeleeCause) cause).getWeapon().getType().toString().toLowerCase().replace("_", " "));
+                if(((MeleeCause) cause).getEntity() instanceof Player)
+                    setMessage(event,  "%s was slain by %s %s", event.getEntity().getDisplayName(), ((MeleeCause) cause).getEntity().getName() + "'s", ChatColor.GRAY + ((MeleeCause) cause).getWeapon().getType().toString().toLowerCase().replace("_", " "));
+                else {
+                    setMessage(event, "%s was slain by a %s", event.getEntity().getDisplayName(), ChatColor.GRAY + ((MeleeCause) cause).getEntity().getName());
+                }
                 break;
             case EntityPotionDamageCause:
                 setMessage(event,  "%s was killed with %s witchcraft", event.getEntity().getDisplayName(), ((PotionDamageCause.EntityPotionDamageCause) cause).getEntity().getName() + "'s");
                 break;
             case ProjectileCause:
-                setMessage(event, "%s was shot by %s (%s)", event.getEntity().getDisplayName(), ((ProjectileCause) cause).getEntity().getName(),  ChatColor.GRAY.toString() +((DispensedProjectileCause) cause).getDistance().intValue());
+                setMessage(event, "%s was shot by %s (%s)", event.getEntity().getDisplayName(), ((ProjectileCause) cause).getEntity().getName(),  ChatColor.GRAY.toString() +((ProjectileCause) cause).getDistance().intValue());
                 break;
-
             case EntityFallCause: // TODO: Get this working as @kblks expects it to work. Faults: Falling credit is not timed, and burning -> triggers fall cause
                 //setMessage(event,  "%s fell at the hands of " + (((FallCause.EntityFallCause) cause).getEntity() instanceof Player ? "" : "a ") + "%s", event.getEntity().getDisplayName(), ((FallCause.EntityFallCause) cause).getEntity().getName());
                 //break;

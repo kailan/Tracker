@@ -1,6 +1,6 @@
 package pw.kmp.tracker.trackers.mob;
 
-import org.bukkit.entity.Creature;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
@@ -14,8 +14,8 @@ public class MobTracker extends Tracker {
     public DamageCause resolveDamage(Player player, EntityDamageEvent event, Lifetime lifetime) {
         if (event instanceof EntityDamageByEntityEvent) {
             EntityDamageByEntityEvent e = (EntityDamageByEntityEvent) event;
-            if (e.getDamager() instanceof Creature) {
-                return new MobAttackCause((Creature) e.getDamager());
+            if (e.getDamager() instanceof LivingEntity && !(e.getDamager() instanceof Player)) {
+                return new MobAttackCause((LivingEntity) e.getDamager());
             }
         }
         return null;

@@ -1,21 +1,20 @@
 package pw.kmp.tracker.trackers.mob;
 
-import org.bukkit.entity.Creature;
 import org.bukkit.entity.LivingEntity;
 import pw.kmp.tracker.damage.DamageCause;
 import pw.kmp.tracker.damage.EntityCause;
 
 public class MobAttackCause extends DamageCause implements EntityCause {
 
-    private final Creature entity;
+    private final LivingEntity entity;
 
-    public MobAttackCause(Creature entity) {
+    public MobAttackCause(LivingEntity entity) {
         this.entity = entity;
     }
 
     @Override
     public String getName() {
-        return "Attack";
+        return "Mob";
     }
 
     @Override
