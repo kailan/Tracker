@@ -51,33 +51,33 @@ public class DeathListener implements Listener {
                 //setMessage(event, event.getEntity().getDisplayName() + " was squashed by a falling anvil.");
                 break;
             case EntityAnvilCause:
-                setMessage(event, event.getEntity().getDisplayName() + " was squashed by " + ((AnvilCause.EntityAnvilCause) cause).getEntity().getName() + "'s falling anvil.");
+                setMessage(event, event.getEntity().getDisplayName() + " was squashed by " + ((AnvilCause.EntityAnvilCause) cause).getEntity().getName() + "'s falling anvil");
                 if(event.getEntity().equals(((AnvilCause.EntityAnvilCause) cause).getEntity()))
-                    setMessage(event, event.getEntity().getDisplayName() + " was squashed by their own falling anvil.");
+                    setMessage(event, event.getEntity().getDisplayName() + " was squashed by their own falling anvil");
                 break;
             case BlockCause:
                 //setMessage(event, event.getEntity().getDisplayName() + " was killed by a " + ((BlockCause) cause).getDamager().getBlock().getType().toString().toLowerCase());
                 break;
             case DispensedProjectileCause:
                 if(((DispensedProjectileCause) cause).getEntity() != null)
-                    setMessage(event, event.getEntity().getDisplayName() + " was shot by " + ((DispensedProjectileCause) cause).getEntity().getName() + "'s dispenser.");
+                    setMessage(event, event.getEntity().getDisplayName() + " was shot by " + ((DispensedProjectileCause) cause).getEntity().getName() + "'s dispenser"  + " (" + ((int) Math.ceil(((DispensedProjectileCause) cause).getDistance())) + ")");
                 else
-                    setMessage(event, event.getEntity().getDisplayName() + " was shot by a dispenser.");
+                    setMessage(event, event.getEntity().getDisplayName() + " was shot by a dispenser " + " (" + ((int) Math.ceil(((DispensedProjectileCause) cause).getDistance())) + ")");
                 break;
             case ExplosionCause:
                 //setMessage(event, event.getEntity().getDisplayName() + " was blown up.");
                 break;
             case EntityExplosionCause:
-                setMessage(event, event.getEntity().getDisplayName() + " was blown up by " + ((ExplosionCause.EntityExplosionCause) cause).getEntity().getName() + ".");
+                setMessage(event, event.getEntity().getDisplayName() + " was blown up by " + ((ExplosionCause.EntityExplosionCause) cause).getEntity().getName());
                 break;
             case FallCause:
                 //setMessage(event, event.getEntity().getDisplayName() + " fell from a height to their death.");
                 break;
             case EntityFallCause:
                 if (((FallCause.EntityFallCause) cause).getEntity() instanceof Player) {
-                    setMessage(event, event.getEntity().getDisplayName() + " fell at the hands of " + ((FallCause.EntityFallCause) cause).getEntity().getName() + ".");
+                    setMessage(event, event.getEntity().getDisplayName() + " fell at the hands of " + ((FallCause.EntityFallCause) cause).getEntity().getName() );
                 } else {
-                    setMessage(event, event.getEntity().getDisplayName() + " fell at the hands of a " + ((FallCause.EntityFallCause) cause).getEntity().getName() + ".");
+                    setMessage(event, event.getEntity().getDisplayName() + " fell at the hands of a " + ((FallCause.EntityFallCause) cause).getEntity().getName());
                 }
                 break;
             case LavaDamageCause:
@@ -87,7 +87,7 @@ public class DeathListener implements Listener {
                 //setMessage(event, event.getEntity().getDisplayName() + " was struck by lightning and electrocuted to death.");
                 break;
             case MeleeCause:
-                setMessage(event, event.getEntity().getDisplayName() + " was slain by " + ((MeleeCause) cause).getEntity().getName() + "'s " + ((MeleeCause) cause).getWeapon().getType().toString().toLowerCase().replace("_", " ") + ".");
+                setMessage(event, event.getEntity().getDisplayName() + " was slain by " + ((MeleeCause) cause).getEntity().getName() + "'s " + ((MeleeCause) cause).getWeapon().getType().toString().toLowerCase().replace("_", " "));
                 break;
             case MobAttackCause:
                 // MC's mob tracking is pretty good :)
@@ -96,10 +96,10 @@ public class DeathListener implements Listener {
             case PotionDamageCause:
                 break;
             case EntityPotionDamageCause:
-                setMessage(event, event.getEntity().getDisplayName() + " was killed with " + ((PotionDamageCause.EntityPotionDamageCause) cause).getEntity().getName() + "'s witchcraft.");
+                setMessage(event, event.getEntity().getDisplayName() + " was killed with " + ((PotionDamageCause.EntityPotionDamageCause) cause).getEntity().getName() + "'s witchcraft");
                 break;
             case ProjectileCause:
-                setMessage(event, event.getEntity().getDisplayName() + " shot by " + ((ProjectileCause) cause).getEntity().getName() + " (" + ((ProjectileCause) cause).getDistance() + ").");
+                setMessage(event, event.getEntity().getDisplayName() + " shot by " + ((ProjectileCause) cause).getEntity().getName() + " (" + ((int) Math.ceil(((ProjectileCause) cause).getDistance())) + ")");
                 break;
             case VoidCause:
                 break;
