@@ -3,6 +3,7 @@ package pw.kmp.tracker;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import pw.kmp.tracker.listeners.DamageListener;
+import pw.kmp.tracker.listeners.DeathListener;
 import pw.kmp.tracker.listeners.DebugListener;
 import pw.kmp.tracker.listeners.LifetimeListener;
 import pw.kmp.tracker.trackers.TrackerManager;
@@ -33,6 +34,7 @@ public class TrackerPlugin extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new DamageListener(), this);
         // debug
         Bukkit.getPluginManager().registerEvents(new DebugListener(), this);
+        Bukkit.getPluginManager().registerEvents(new DeathListener(), this);
 
         TrackerManager manager = Trackers.getManager();
 
@@ -50,9 +52,10 @@ public class TrackerPlugin extends JavaPlugin {
 
         manager.registerTracker(new PotionTracker());
         ProjectileTracker projectileTracker = new ProjectileTracker();
-        manager.registerTracker(projectileTracker);
 
         manager.registerTracker(new DispensedProjectileTracker(projectileTracker));
+        manager.registerTracker(projectileTracker);
+
 
         manager.getTrackers().stream().forEach(System.out::println);
     }

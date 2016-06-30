@@ -37,6 +37,7 @@ public class DamageListener implements Listener {
             }
         }
         damage.setCause(cause);
+        lifetime.addDamage(damage);
 
         TrackedDamageEvent tde = new TrackedDamageEvent(damage);
         tde.setCancelled(event.isCancelled());
@@ -44,11 +45,11 @@ public class DamageListener implements Listener {
         event.setCancelled(tde.isCancelled());
     }
 
-    @EventHandler(priority = EventPriority.MONITOR)
+    @EventHandler(priority = EventPriority.HIGH)
     public void onDeath(PlayerDeathEvent event) {
         Lifetime lifetime = Lifetimes.getLifetime(event.getEntity());
         if (lifetime != null && lifetime.getLastDamage() != null) {
-            TrackedDeathEvent tde = new TrackedDeathEvent(event.getEntity(), lifetime.getLastDamage());
+            TrackedDeathEvent tde = new TrackedDeathEvent(event, event.getEntity(), lifetime.getLastDamage());
             Bukkit.getPluginManager().callEvent(tde);
         }
     }

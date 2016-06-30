@@ -12,7 +12,7 @@ public class FallCause extends DamageCause {
         return "Fall Damage";
     }
 
-    static class EntityFallCause extends FallCause implements EntityCause {
+    public static class EntityFallCause extends FallCause implements EntityCause {
 
         private final Damage causeDamage;
         private final LivingEntity attacker;
