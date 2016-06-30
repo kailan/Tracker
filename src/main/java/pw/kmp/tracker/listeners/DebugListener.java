@@ -5,6 +5,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import pw.kmp.tracker.event.TrackedDamageEvent;
+import pw.kmp.tracker.trackers.lava.LavaDamageCause;
 
 public class DebugListener implements Listener {
     @EventHandler(priority = EventPriority.MONITOR)
