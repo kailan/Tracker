@@ -3,6 +3,7 @@ package pw.kmp.tracker.listeners;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.entity.Entity;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import pw.kmp.tracker.damage.DamageCause;
@@ -43,7 +44,7 @@ public class DeathListener implements Listener {
         event.setDeathMessage( String.format(ChatColor.GRAY + newMessage, names));
     }
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.LOWEST)
     public void onTrackedDeathEvent(TrackedDeathEvent trackedDeathEvent) {
 
         DamageCauses causeSwitch = DamageCauses.valueOf(trackedDeathEvent.getCause().getCause().getClass().getSimpleName());

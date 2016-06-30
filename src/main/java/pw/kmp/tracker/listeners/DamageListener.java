@@ -45,7 +45,7 @@ public class DamageListener implements Listener {
         event.setCancelled(tde.isCancelled());
     }
 
-    @EventHandler(priority = EventPriority.HIGH)
+    @EventHandler(priority = EventPriority.LOWEST)
     public void onDeath(PlayerDeathEvent event) {
         Lifetime lifetime = Lifetimes.getLifetime(event.getEntity());
         if (lifetime != null && lifetime.getLastDamage() != null) {
